@@ -1,51 +1,5 @@
 import React, { useState } from "react";
 
-// const scoresMemory = {
-//   Avital: [12, 10, 5],
-//   Moriel: [5, 18, 3],
-//   Avi: [],
-//   coco: [4, 19, 20],
-//   lily: [20, 2],
-// };
-
-// const top3LowestAverages = Object.entries(scoresMemory)
-//   .map(([name, scores]) => {
-//     if (scores.length === 0) return { name, avg: null }; // skip empty
-//     const avg = scores.reduce((sum, n) => sum + n, 0) / scores.length;
-//     return { name, avg };
-//   })
-//   // filter out null and zero averages
-//   .filter(({ avg }) => avg && avg !== 0)
-//   // sort by ascending average (lowest first)
-//   .sort((a, b) => a.avg - b.avg)
-//   // take top 3
-//   .slice(0, 3);
-
-// console.log(top3LowestAverages);
-
-// 1️⃣ Get the data back from localStorage
-const saved = localStorage.getItem("scoresMemory");
-
-if (saved) {
-  // 2️⃣ Convert string back to object
-  const scoresMemory = JSON.parse(saved);
-
-  // 3️⃣ Calculate top 3 lowest averages (ignoring empty & zero)
-  const top3LowestAverages = Object.entries(scoresMemory)
-    .map(([name, scores]) => {
-      if (!scores || scores.length === 0) return { name, avg: null };
-      const avg = scores.reduce((sum, n) => sum + n, 0) / scores.length;
-      return { name, avg };
-    })
-    .filter(({ avg }) => avg && avg !== 0)
-    .sort((a, b) => a.avg - b.avg)
-    .slice(0, 3);
-
-  console.log(top3LowestAverages);
-} else {
-  console.log("No data found in localStorage under 'scoresMemory'");
-}
-
 function NavBar() {
   const [addPlayer, setAddPlayer] = useState(false);
   const [showBoard, setShowBoard] = useState(false);
@@ -86,7 +40,7 @@ function NavBar() {
 
   function getTop3() {
     const allPlayersStr = localStorage.getItem("scoresMemory");
-    if (saved) {
+    if (allPlayersStr) {
       const allPlayers = JSON.parse(allPlayersStr);
 
       const top3 = Object.entries(allPlayers)
