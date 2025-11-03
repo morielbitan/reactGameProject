@@ -4,7 +4,7 @@ import WinningDisplay from "./WinningDisplay";
 
 function PlayerWindow({
   currentPlayer,
-  movePlayer,
+  movePointer,
   handleExit,
   handleNewGame,
   playerStatus,
@@ -27,7 +27,7 @@ function PlayerWindow({
       return action(prev, value);
     });
     setSteps((prev) => prev + 1);
-    movePlayer();
+    movePointer();
   }
 
   return (

@@ -6,7 +6,9 @@ function App() {
   const [players, setPlayers] = useState([]);
 
   function addPlayer(player) {
-    setPlayers((prev) => [...prev, player]);
+    players.length === 0
+      ? setPlayers([{ ...player, status: true }])
+      : setPlayers((prev) => [...prev, player]);
   }
 
   return (
