@@ -24,27 +24,31 @@ function PlayerWindow({
       };
       const action = operations[operator];
       if (!action || isNaN(value)) return prev;
-      return Math.floor(action(prev, value)) < 0
-        ? 0
-        : Math.floor(action(prev, value));
+
+      const newNumber =
+        Math.floor(action(prev, value)) < 0
+          ? 0
+          : Math.floor(action(prev, value));
+
+      if (newNumber !== 10) movePointer();
+
+      return newNumber;
     });
     setSteps((prev) => prev + 1);
-    movePointer();
   }
+
   function resetGame() {
     setSteps(0);
     setNumber(Math.floor(Math.random() * 10));
   }
   function playerPastGames() {
     const allPlayers = JSON.parse(localStorage.getItem("scoresMemory"));
-    return allPlayers[currentPlayer.name];
+    return allPlayers[currentPlayer.name].join(", ");
   }
   return (
     <>
       <h2 className="user-name">{currentPlayer.name}</h2>
-      <h2 className="past-games">
-        Past Games Scores: {playerPastGames().join(", ")}
-      </h2>
+      <h2 className="past-games">Past Games Scores: {playerPastGames()}</h2>
       <h2 className="steps">Steps: {steps}</h2>
       <h1 className="number">{number}</h1>
 
@@ -57,6 +61,7 @@ function PlayerWindow({
           }}
           handleExit={handleExit}
           steps={steps}
+          movePointer={movePointer}
         />
       ) : (
         <ControlButtons handleStep={handleStep} playerStatus={playerStatus} />
