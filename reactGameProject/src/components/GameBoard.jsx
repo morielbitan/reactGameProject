@@ -60,22 +60,24 @@ function GameBoard({ players, setPlayers }) {
 
   return (
     <>
-      {players.map((player) => (
-        <div
-          key={player.name}
-          className={`player-window ${
-            player.status === true ? "enabled" : "disabled"
-          }`}
-        >
-          <PlayerWindow
-            currentPlayer={player}
-            movePointer={movePointer}
-            handleExit={handleExit}
-            handleNewGame={handleNewGame}
-            playerStatus={player.status}
-          />
-        </div>
-      ))}
+      <div id="playersGrid">
+        {players.map((player) => (
+          <div
+            key={player.name}
+            className={`player-window ${
+              player.status === true ? "enabled" : "disabled"
+            }`}
+          >
+            <PlayerWindow
+              currentPlayer={player}
+              movePointer={movePointer}
+              handleExit={handleExit}
+              handleNewGame={handleNewGame}
+              playerStatus={player.status}
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 }
