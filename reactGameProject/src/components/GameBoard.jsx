@@ -16,16 +16,48 @@ function GameBoard({ players, setPlayers }) {
   }
 
   function handleNewGame(currentPlayer) {
-    const filtered = players.filter(
+    const currentIndex = players.findIndex(
+      (player) => player.name === currentPlayer.name
+    );
+    const remainingPlayers = players.filter(
       (player) => player.name !== currentPlayer.name
     );
-    const newPlayers = [...filtered, currentPlayer];
+    const newPlayers = [
+      ...remainingPlayers,
+      { ...currentPlayer, status: false },
+    ];
+
+    const nextPointer =
+      currentIndex >= remainingPlayers.length ? 0 : currentIndex;
+
     setPlayers(newPlayers);
+    setPointer(nextPointer);
+    handleTurnMovement(nextPointer);
   }
 
   function handleExit(currentPlayer) {
-    setPlayers((prev) => prev.filter((p) => p.name !== currentPlayer.name));
+    const currentIndex = players.findIndex(
+      (player) => player.name === currentPlayer.name
+    );
+    const remainingPlayers = players.filter(
+      (player) => player.name !== currentPlayer.name
+    );
+    if (remainingPlayers.length === 0) {
+      setPlayers([]);
+      return;
+    }
+    const nextPointer =
+      currentIndex >= remainingPlayers.length ? 0 : currentIndex;
+
+    const newPlayers = remainingPlayers.map((player, i) => ({
+      ...player,
+      status: i === nextPointer,
+    }));
+
+    setPlayers(newPlayers);
+    setPointer(nextPointer);
   }
+
   return (
     <>
       {players.map((player) => (
