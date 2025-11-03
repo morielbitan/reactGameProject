@@ -42,7 +42,7 @@ function PlayerWindow({
           currentPlayer={currentPlayer}
           handleNewGame={handleNewGame}
           handleExit={handleExit}
-          playerStatus={playerStatus}
+          steps={steps}
         />
       ) : (
         <ControlButtons handleStep={handleStep} playerStatus={playerStatus} />

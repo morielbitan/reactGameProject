@@ -1,8 +1,15 @@
-function WinningDisplay({ currentPlayer, handleExit, handleNewGame }) {
+function WinningDisplay({ currentPlayer, handleExit, handleNewGame, steps }) {
+  function addStepsToMemory() {
+    const allPlayers = JSON.parse(localStorage.getItem("scoresMemory"));
+    allPlayers[currentPlayer["name"]].push(steps);
+    console.log(allPlayers);
+    localStorage.setItem("scoresMemory", JSON.stringify(allPlayers));
+  }
   return (
     <>
       <div className="winning-display">
-        <h1>You WON!</h1>{" "}
+        <h1>You WON!</h1>
+        {addStepsToMemory()}
         <button
           className="control-btn"
           onClick={() => handleNewGame(currentPlayer)}
