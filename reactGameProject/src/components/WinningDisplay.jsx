@@ -1,4 +1,10 @@
-function WinningDisplay({ currentPlayer, handleExit, handleNewGame, steps }) {
+function WinningDisplay({
+  currentPlayer,
+  handleExit,
+  handleNewGame,
+  steps,
+  movePointer,
+}) {
   function addStepsToMemory() {
     const allPlayers = JSON.parse(localStorage.getItem("scoresMemory"));
     allPlayers[currentPlayer["name"]].push(steps);
@@ -12,13 +18,19 @@ function WinningDisplay({ currentPlayer, handleExit, handleNewGame, steps }) {
         {addStepsToMemory()}
         <button
           className="control-btn"
-          onClick={() => handleNewGame(currentPlayer)}
+          onClick={() => {
+            handleNewGame(currentPlayer);
+            movePointer();
+          }}
         >
           New Game
         </button>
         <button
           className="control-btn"
-          onClick={() => handleExit(currentPlayer)}
+          onClick={() => {
+            handleExit(currentPlayer);
+            movePointer();
+          }}
         >
           Quit
         </button>
