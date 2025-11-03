@@ -11,9 +11,9 @@ function GameBoard({ players, setPlayers }) {
   //     setPlayers((prev) => [...prev, player]);
   //   }
 
-  function handleTurnMovement() {
+  function handleTurnMovement(next) {
     let newPlayers = players.map((player) => ({ ...player, status: false }));
-    newPlayers[pointer].status = true;
+    newPlayers[next].status = true;
     setPlayers(newPlayers);
   }
 

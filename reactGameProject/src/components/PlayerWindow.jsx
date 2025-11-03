@@ -10,7 +10,7 @@ function PlayerWindow({
   playerStatus,
 }) {
   const [steps, setSteps] = useState(0);
-  const [number, setNumber] = useState(Math.round(Math.random() * 10));
+  const [number, setNumber] = useState(Math.floor(Math.random() * 10));
 
   function handleStep(move) {
     setNumber((prev) => {
