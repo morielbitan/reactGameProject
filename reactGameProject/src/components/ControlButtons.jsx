@@ -30,7 +30,7 @@ function ControlButtons({ handleStep, playerStatus }) {
           disabled={!playerStatus}
           onClick={() => handleStep("/2")}
         >
-          ÷/2
+          ÷2
         </button>
       </div>
     </>

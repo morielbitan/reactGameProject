@@ -15,6 +15,7 @@ function WinningDisplay({
     <>
       <div className="winning-display">
         <h1>You WON!</h1>
+        <h1>👽👽👽</h1>
         {addStepsToMemory()}
         <button
           className="control-btn"
