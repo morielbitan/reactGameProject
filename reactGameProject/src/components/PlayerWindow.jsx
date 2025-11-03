@@ -24,7 +24,9 @@ function PlayerWindow({
       };
       const action = operations[operator];
       if (!action || isNaN(value)) return prev;
-      return Math.floor(action(prev, value));
+      return Math.floor(action(prev, value)) < 0
+        ? 0
+        : Math.floor(action(prev, value));
     });
     setSteps((prev) => prev + 1);
     movePointer();
@@ -44,7 +46,6 @@ function PlayerWindow({
         Past Games Scores: {playerPastGames().join(", ")}
       </h2>
       <h2 className="steps">Steps: {steps}</h2>
-      <h2 className="status">{playerStatus ? "enabled" : "disabled"}</h2>
       <h1 className="number">{number}</h1>
 
       {number === 10 ? (

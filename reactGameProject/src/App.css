@@ -1,10 +1,7 @@
-/* --- Global Styles --- */
-
 body {
-  /* Soft, playful pastel gradient background */
-  background: linear-gradient(135deg, #a7e9af, #b3cde3);
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   font-family: "Poppins", sans-serif;
-  color: #333; /* Darker text for better contrast on pastel background */
+  color: #333; 
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -15,99 +12,108 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
-  max-width: 1400px; /* Increased max width for more space */
+  padding: 1.25rem;
+  max-width: 87.5rem;
   margin: 0 auto;
   padding: 2rem;
+  margin-top: 6.25rem; 
   text-align: center;
 }
 
-/* --- Navigation Bar --- */
-
 #navBarContainer {
+  font-weight: 700;
+  position: fixed; 
+  top:1%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  max-width: 1100px; /* Wider nav bar */
-  background-color: rgba(255, 255, 255, 0.5); /* Lighter, more transparent background */
-  backdrop-filter: blur(10px);
-  border-radius: 20px; /* Softer rounded corners */
-  padding: 20px 35px;
-  margin-bottom: 30px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  border: 2px solid #fff; /* A crisp white border */
-}
+  max-width: 68.75rem; 
+  background-color: rgba(255, 255, 255, 0.592); 
+  backdrop-filter: blur(0.5rem);
+  border-radius: 1.25rem; 
+  padding: 1.25rem 2.1875rem;
+  box-shadow: 0 0.375rem 0.9375rem rgba(0, 0, 0, 0.1);
 
+}
+#navBarContainer button
+{
+  background-color:#ff80ab;
+  color: #ffffff;
+  font-weight: 700;
+}
+#navBarContainer button:hover {
+  background-color: #ff4081; 
+  border-color: #ff4081;
+}
 #addPlayerContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 #addPlayerContainer input {
-  border: 2px solid #f6e6e6; /* Pastel pink border */
-  border-radius: 12px;
-  padding: 10px 15px;
-  font-size: 16px;
+  border: 0.125rem solid #e0e0e0; 
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.9375rem;
+  font-size: 1rem;
   color: #333;
   background-color: #fff;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
 }
 
 #addPlayerContainer button {
-  /* Pastel orange/coral color */
-  background-color: #ffb380;
+  background-color: #ff80ab;
   color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 18px;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.125rem;
   cursor: pointer;
   font-weight: bold;
-  font-size: 16px;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: all 0.1s ease-out;
 }
 
 #addPlayerContainer button:hover {
-  background-color: #ff9966; /* Slightly darker hover */
-  transform: translateY(-2px);
+  background-color: #ff4081; 
+  border-color: #ff4081;
+}
+#addPlayerContainer button:disabled {
+  background-color: #f06292; 
+  cursor: not-allowed;
+  transform: none;
 }
 
-/* --- Player Windows Grid Container --- */
-
-/* Add a new container in your HTML (e.g., <div id="playersGrid">...</div>) 
-   around all your player-window elements for the grid to work effectively. */
 #playersGrid {
+  margin-top: 15%;
   display: grid;
-  /* Auto-fit as many columns as possible, each at least 300px wide */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 25px; /* Spacing between grid items */
+  grid-template-columns: repeat(auto-fit, minmax(37.5rem, 1fr)); 
+  gap: 1.5625rem;
   width: 100%;
-  max-width: 1280px;
-  margin-top: 20px;
+  max-width: 80rem;
+  margin-top: 1.25rem;
 }
 
-/* --- Individual Player Window --- */
 
 .player-window {
-  /* Grid handles the width and display now */
   display: flex; 
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.7); /* Lighter, softer white */
-  border: 3px solid transparent;
-  border-radius: 20px;
-  padding: 30px 20px;
+  background-color: rgb(255, 255, 255); 
+  border: 0.1875rem solid transparent; 
+  border-radius: 1.25rem;
+  padding: 1.875rem 1.25rem;
   text-align: center;
   transition: border 0.3s, transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.1);
 }
 
 .player-window.enabled {
-  border-color: #81c784; /* Pastel green for active */
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(129, 199, 132, 0.5); /* Glow effect */
+  transform: translateY(-0.3125rem) scale(1.02);
+  box-shadow: 0 0.625rem 1.25rem rgba(233, 30, 99, 0.5);
 }
 
 .player-window.disabled {
@@ -116,58 +122,62 @@ body {
 }
 
 .user-name {
-  font-size: 24px;
-  margin: 10px 0;
-  color: #795548; /* Earthy brown for name */
+  font-size: 1.5rem;
+  margin: 0.625rem 0;
+  color: #880e4f; 
   font-weight: 600;
 }
 
 .number {
-  font-size: 60px; /* Larger number */
+  font-size: 3.75rem; 
   font-weight: 800;
-  color: #ff8a80; /* Pastel red/coral for number */
-  margin: 15px 0;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  color: #f48fb1; 
+  margin: 0.9375rem 0;
+  text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 .control-panel {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
 }
 
 .control-btn {
-  background-color: #64b5f6; /* Pastel blue */
+  background-color: #ff80ab;
+  color: #fff;
   border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 16px;
-  padding: 10px 16px;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.125rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.1s ease-out;
+  border-bottom: 0.25rem solid #c85a85; 
+  box-shadow: 0 0.25rem 0 #c85a85;
+  transform: translateY(0);
 }
 
-.control-btn:hover {
-  background-color: #42a5f5; /* Slightly deeper blue on hover */
-  transform: translateY(-2px);
+.control-btn:hover  {
+  background-color: #ff4081; 
+  box-shadow: 0 0.125rem 0 #c85a85; 
+  transform: translateY(0.125rem);
 }
-
 .control-btn:disabled {
-  background-color: #bdbdbd; /* Light gray for disabled */
+  background-color: #f06292; 
   cursor: not-allowed;
   transform: none;
+  border-bottom: 0.125rem solid #a04264;
+  box-shadow: 0 0.125rem 0 #a04264;
 }
 
-/* --- Scoreboard/Board Display --- */
 
 #showBoardContainer {
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  padding: 20px;
-  margin-top: 30px;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  margin-top: 1.875rem;
   text-align: center;
   max-width: 90%;
   width: 100%;
@@ -180,40 +190,40 @@ body {
 
 #showBoardContainer th,
 #showBoardContainer td {
-  border-bottom: 1px solid rgba(121, 85, 72, 0.2); /* Softer line */
-  padding: 12px;
+  border-bottom: 0.0625rem solid rgba(136, 14, 79, 0.2); 
+  padding: 0.75rem;
   color: #333;
 }
 
 #showBoardContainer th {
     font-weight: bold;
-    color: #4db6ac; /* Pastel teal for headers */
+    color: #e91e63; 
 }
 
 #showBoardContainer caption {
   font-weight: bold;
-  margin-bottom: 15px;
-  color: #795548; /* Earthy brown for caption */
+  margin-bottom: 0.9375rem;
+  color: #880e4f; 
   font-size: 1.2em;
 }
 
-/* --- Winning Display --- */
-
 .winning-display {
-  margin-top: 25px;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: rgba(129, 199, 132, 0.8); /* Pastel green background */
+  margin-top: 1.5625rem;
+  padding: 0.9375rem;
+  border-radius: 0.9375rem;
+  background-color: rgba(233, 30, 99, 0.8); 
   text-align: center;
   animation: winPop 0.8s ease;
   color: white;
-  box-shadow: 0 0 20px rgba(129, 199, 132, 0.8);
+  box-shadow: 0 0 1.25rem rgba(233, 30, 99, 0.8);
 }
-
+.winning-display button{
+  margin: 0.5rem;
+}
 .winning-display h1 {
   color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+  text-shadow: 0.0625rem 0.0625rem 0.1875rem rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.625rem;
 }
 
 @keyframes winPop {
