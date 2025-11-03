@@ -28,8 +28,8 @@ function WinningDisplay({
         <button
           className="control-btn"
           onClick={() => {
-            handleExit(currentPlayer);
             movePointer();
+            handleExit(currentPlayer);
           }}
         >
           Quit
