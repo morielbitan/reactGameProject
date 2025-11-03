@@ -24,12 +24,15 @@ function PlayerWindow({
       };
       const action = operations[operator];
       if (!action || isNaN(value)) return prev;
-      return action(prev, value);
+      return Math.floor(action(prev, value));
     });
     setSteps((prev) => prev + 1);
     movePointer();
   }
-
+  function resetGame() {
+    setSteps(0);
+    setNumber(Math.floor(Math.random() * 10));
+  }
   return (
     <>
       <h2 className="user-name">{currentPlayer.name}</h2>
@@ -40,7 +43,10 @@ function PlayerWindow({
       {number === 10 ? (
         <WinningDisplay
           currentPlayer={currentPlayer}
-          handleNewGame={handleNewGame}
+          handleNewGame={(player) => {
+            handleNewGame(player);
+            resetGame();
+          }}
           handleExit={handleExit}
           steps={steps}
         />
