@@ -1,11 +1,15 @@
 import PlayerWindow from "./PlayerWindow";
 import { useState } from "react";
-function GameBoard() {
-  const [players, setPlayers] = useState([
-    { name: "Avital", steps: 0, games: 0, status: true },
-    { name: "Moriel", steps: 0, games: 0, status: false },
-  ]);
+function GameBoard({ players, setPlayers }) {
+  //   const [players, setPlayers] = useState([
+  //     { name: "Avital", steps: 0, status: true },
+  //     { name: "Moriel", steps: 0, status: false },
+  //   ]);
   const [pointer, setPointer] = useState(0);
+
+  //   function addPlayer(player) {
+  //     setPlayers((prev) => [...prev, player]);
+  //   }
 
   function handleTurnMovement() {
     let newPlayers = players.map((player) => ({ ...player, status: false }));

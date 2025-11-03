@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function AddPlayer() {
-  const [addPlayer, setAddPlayer] = useState(false);
+function AddPlayer({ addPlayer }) {
   const [name, setName] = useState("");
 
   function handleAddPlayer() {
@@ -11,6 +10,11 @@ function AddPlayer() {
       scoresMemory[name] = [];
       localStorage.setItem("scoresMemory", JSON.stringify(scoresMemory));
     }
+    addPlayer({
+      name: name,
+      steps: [JSON.parse(localStorage.getItem("scoresMemory"))[name]],
+      status: false,
+    });
     setName("");
   }
 
@@ -33,12 +37,7 @@ function AddPlayer() {
     );
   }
 
-  return (
-    <>
-      <button onClick={() => setAddPlayer(!addPlayer)}>Add Player</button>
-      {addPlayer && displayAddPlayer()}
-    </>
-  );
+  return <>{displayAddPlayer()}</>;
 }
 
 export default AddPlayer;

@@ -1,11 +1,11 @@
 import ScoreBoard from "./ScoreBoard";
 import AddPlayer from "./AddPlayer";
 
-function NavBar() {
+function NavBar({ addPlayer }) {
   return (
     <>
       <div id="navBarContainer">
-        <AddPlayer />
+        <AddPlayer addPlayer={addPlayer} />
         <ScoreBoard />
       </div>
     </>

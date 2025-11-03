@@ -4,14 +4,14 @@ function ControlButtons({ handleStep, playerStatus }) {
       <div className="control-panel">
         <button
           className="control-btn"
-          disabled={playerStatus}
+          disabled={!playerStatus}
           onClick={() => handleStep("+1")}
         >
           +1
         </button>
         <button
           className="control-btn"
-          disabled={playerStatus}
+          disabled={!playerStatus}
           onClick={() => handleStep("-1")}
         >
           -1
@@ -19,7 +19,7 @@ function ControlButtons({ handleStep, playerStatus }) {
 
         <button
           className="control-btn"
-          disabled={playerStatus}
+          disabled={!playerStatus}
           onClick={() => handleStep("*2")}
         >
           x2
@@ -27,7 +27,7 @@ function ControlButtons({ handleStep, playerStatus }) {
 
         <button
           className="control-btn"
-          disabled={playerStatus}
+          disabled={!playerStatus}
           onClick={() => handleStep("/2")}
         >
           ÷/2
