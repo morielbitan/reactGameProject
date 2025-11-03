@@ -33,9 +33,16 @@ function PlayerWindow({
     setSteps(0);
     setNumber(Math.floor(Math.random() * 10));
   }
+  function playerPastGames() {
+    const allPlayers = JSON.parse(localStorage.getItem("scoresMemory"));
+    return allPlayers[currentPlayer.name];
+  }
   return (
     <>
       <h2 className="user-name">{currentPlayer.name}</h2>
+      <h2 className="past-games">
+        Past Games Scores: {playerPastGames().join(", ")}
+      </h2>
       <h2 className="steps">Steps: {steps}</h2>
       <h2 className="status">{playerStatus ? "enabled" : "disabled"}</h2>
       <h1 className="number">{number}</h1>

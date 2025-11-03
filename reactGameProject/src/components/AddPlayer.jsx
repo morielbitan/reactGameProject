@@ -32,7 +32,9 @@ function AddPlayer({ addPlayer }) {
           maxLength="8"
           size="10"
         />
-        <button onClick={handleAddPlayer}>Add</button>
+        <button disabled={!name} onClick={handleAddPlayer}>
+          Add
+        </button>
       </div>
     );
   }
