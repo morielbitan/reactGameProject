@@ -1,22 +1,30 @@
 import PlayerWindow from "./PlayerWindow";
 import { useState } from "react";
 function GameBoard() {
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([
+    { name: "Avital", steps: 0, games: 0, status: true },
+    { name: "Moriel", steps: 0, games: 0, status: false },
+  ]);
   const [pointer, setPointer] = useState(0);
-  let newPlayers = players.map((player) => (player.status = false));
-  newPlayers[pointer].status = true;
-  setPlayers(newPlayers);
+
+  function handleTurnMovement() {
+    let newPlayers = players.map((player) => ({ ...player, status: false }));
+    newPlayers[pointer].status = true;
+    setPlayers(newPlayers);
+  }
 
   function movePlayer() {
-    if (pointer === players.length - 1) setPointer(0);
-    else setPointer((prev) => prev++);
+    const next = pointer === players.length - 1 ? 0 : pointer + 1;
+    setPointer(next);
+    handleTurnMovement(next);
   }
 
   function handleNewGame(currentPlayer) {
-    setPlayers((prev) => {
-      const filtered = prev.filter((p) => p.name !== currentPlayer.name);
-      return [...filtered, currentPlayer];
-    });
+    const filtered = players.filter(
+      (player) => player.name !== currentPlayer.name
+    );
+    const newPlayers = [...filtered, currentPlayer];
+    setPlayers(newPlayers);
   }
 
   function handleExit(currentPlayer) {
@@ -24,18 +32,22 @@ function GameBoard() {
   }
   return (
     <>
-      <div className="player-window">
-        {players.map((player) => {
-          <div className={player.status ? "enabled" : "disabled"}>
-            <PlayerWindow
-              currentPlayer={player}
-              movePlayer={movePlayer}
-              handleExit={handleExit}
-              handleNewGame={handleNewGame}
-            />
-          </div>;
-        })}
-      </div>
+      {players.map((player) => (
+        <div
+          key={player.name}
+          className={`player-window ${
+            player.status === true ? "enabled" : "disabled"
+          }`}
+        >
+          <PlayerWindow
+            currentPlayer={player}
+            movePlayer={movePlayer}
+            handleExit={handleExit}
+            handleNewGame={handleNewGame}
+            playerStatus={player.status}
+          />
+        </div>
+      ))}
     </>
   );
 }
